@@ -1,7 +1,7 @@
 [run]
 branch = True
-source = tripleo_common
-omit = tripleo_common/tests/*
+source = tripleo_workflows
+omit = tripleo_workflows/tests/*
 
 [report]
 ignore_errors = True

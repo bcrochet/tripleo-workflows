@@ -2,35 +2,35 @@
 Team and repository tags
 ========================
 
-.. image:: https://governance.openstack.org/tc/badges/tripleo-common.svg
+.. image:: https://governance.openstack.org/tc/badges/tripleo-workflows.svg
     :target: https://governance.openstack.org/tc/reference/tags/index.html
 
 .. Change things from this point on
 
-==============
-tripleo-common
-==============
+=================
+tripleo-workflows
+=================
 
 A common library for TripleO workflows.
 
 * Free software: Apache license
-* Documentation: https://docs.openstack.org/tripleo-common/latest/
-* Source: http://git.openstack.org/cgit/openstack/tripleo-common
-* Bugs: https://bugs.launchpad.net/tripleo-common
+* Documentation: https://docs.openstack.org/tripleo-workflows/latest/
+* Source: http://git.openstack.org/cgit/openstack/tripleo-workflows
+* Bugs: https://bugs.launchpad.net/tripleo-workflows
 
 Action Development
 ------------------
 
 
-When developing new actions, you will checkout a copy of tripleo-common to an
+When developing new actions, you will checkout a copy of tripleo-workflows to an
 undercloud machine and add actions as needed.  To test the actions they need
 to be installed and selected services need to be restarted.  Use the following
 code to accomplish these tasks. ::
 
 
-    sudo rm -Rf /usr/lib/python2.7/site-packages/tripleo_common*
+    sudo rm -Rf /usr/lib/python2.7/site-packages/tripleo_workflows*
     sudo python setup.py install
-    sudo cp /usr/share/tripleo-common/sudoers /etc/sudoers.d/tripleo-common
+    sudo cp /usr/share/tripleo-workflows/sudoers /etc/sudoers.d/tripleo-workflows
     sudo systemctl restart openstack-mistral-executor
     sudo systemctl restart openstack-mistral-engine
     # this loads the actions via entrypoints
@@ -39,7 +39,7 @@ code to accomplish these tasks. ::
     mistral action-list | grep tripleo
 
 Workflow Development
-------------------
+--------------------
 
 
 When developing new workflows, you will need to reload the modified workflows,
@@ -53,7 +53,7 @@ while under development. ::
     for workflow in $(openstack workflow list -f value -c Name | grep tripleo); do
         openstack workflow delete $workflow
     done
-    for workbook in $(ls /usr/share/openstack-tripleo-common/workbooks/*); do
+    for workbook in $(ls /usr/share/openstack-tripleo-workflows/workbooks/*); do
         openstack workbook create $workbook
     done
 
